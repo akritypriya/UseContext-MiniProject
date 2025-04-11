@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import UserContext from './context/UserContext';
 import styles from './Profile.module.css';
+import Header from '../components/Header';
 
 function Profile() {
   const { user } = useContext(UserContext);
-
+ //condtional rndering
   if (!user) return <div className={styles.loginMessage}>Please Login</div>;
 
   return (
+    <>
+    <Header /> 
     <div className={styles.container}>
       <h1 className={styles.heading}>Welcome {user.username}</h1>
       <h2 className={styles.subheading}>Handling Context API</h2>
@@ -23,6 +26,7 @@ function Profile() {
         <li>Consume the Context value using <code>useContext()</code></li>
       </ul>
     </div>
+    </>
   );
 }
 

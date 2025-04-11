@@ -1,0 +1,32 @@
+.header {
+    background-color: #1e1e2f;
+    padding: 2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .nav {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navItem {
+    list-style: none;
+  }
+  
+  .link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .link:hover {
+    color: #00bfff;
+  }
+  
