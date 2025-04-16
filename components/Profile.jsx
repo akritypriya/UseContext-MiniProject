@@ -2,11 +2,18 @@ import React, { useContext } from 'react';
 import UserContext from './context/UserContext';
 import styles from './Profile.module.css';
 import Header from '../components/Header';
+import { Link } from 'react-router-dom';
 
 function Profile() {
   const { user } = useContext(UserContext);
- //condtional rndering
-  if (!user) return <div className={styles.loginMessage}>Please Login</div>;
+ //condtional rendering
+ if (!user?.username) {
+  return (
+    <div className={styles.loginMessage}>
+      <Link to="/login">Please Login</Link>
+    </div>
+  );
+}
 
   return (
     <>

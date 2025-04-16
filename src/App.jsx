@@ -10,7 +10,7 @@ const App = () => {
 <UserContextProvider> 
 <BrowserRouter>
    <Routes>
-    <Route path="/" element={<Login />} />
+    <Route path="/login" element={<Login />} />
     <Route path="/profile" element={<Profile />} />
     <Route path="/home" element={<HomePage />} />
     <Route path="/cart" element={<Cart />} />
