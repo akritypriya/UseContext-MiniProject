@@ -6,8 +6,10 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    
     const navigate = useNavigate();
-    const { setUser } = useContext(UserContext);
+    
+    const {theme,setTheme,setUser}=useContext(UserContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,7 +17,11 @@ function Login() {
         navigate('/profile');
     };
 
+   const handleThemeToggle=()=>{
+    setTheme((prevTheme)=>(prevTheme==='light'?'black':'light'))
+   };
     return (
+    
         <div className={styles.container}>
             <h2 className={styles.title}>Login</h2>
             <input
@@ -35,7 +41,14 @@ function Login() {
             <button type="submit" onClick={handleSubmit} className={styles.button}>
                 Submit
             </button>
+            <div style={{padding:"20px"}}>
+            <button onCLick={handleThemeToggle} style={{background:theme==='light'?'white':'black',
+            color:theme==='light'?'black':'white'}}> Toggle Theme</button>
+            </div>
         </div>
+        
+
+    
     );
 }
 

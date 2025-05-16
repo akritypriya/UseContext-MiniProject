@@ -11,7 +11,7 @@ const App = () => {
 <UserContextProvider> 
 <BrowserRouter>
    <Routes>
-   <Route path="/" element={<Dashboard initialCount={0} />} />
+   <Route path="/dashboard" element={<Dashboard initialCount={0} />} />
     <Route path="/login" element={<Login />} />
     <Route path="/profile" element={<Profile />} />
     <Route path="/home" element={<HomePage />} />
