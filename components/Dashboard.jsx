@@ -23,25 +23,29 @@ function Dashboard({initialCount}){
  //   );
     
  useEffect(()=>{
-
-    async function fetchData(){
-        if(searchItem.trim()===''){
-            setResults([]);
-            return;
+    const debounce = setTimeout(()=>{
+        async function fetchData(){
+            if(searchItem.trim()===''){
+                setResults([]);
+                return;
+            }
+            try{
+                const resultData=await fetch('https://openlibrary.org/search.json?q=${searchItem}');
+                const data=await resultData.json();
+                const titles=data.docs.slice(0,10).map((book)=>book.title);
+                setResults(titles);
+            }catch(error){
+                console.error('error occur');
+                setResults([]);
+            }
         }
-        try{
-            const resultData=await fetch('https://openlibraray.org/search.json?=${searchItem}');
-            const data=await resultData.json();
-            const titles=data.docs.slice(0,10).map((book)=>book.title);
-            setResults(titles);
-        }catch(error){
-            console.error('error occur');
-            setResults([]);
-        }
-    }
-    fetchData();
-        
- },[searchItem]);
+        fetchData();
+            
+     },500);
+     //clear timeout is search item changes before delay 
+     return ()=> clearTimeout(debounce);
+    },[searchItem]);
+ 
 
 
    return(
